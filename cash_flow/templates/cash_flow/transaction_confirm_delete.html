@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Удаление операции{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Удалить операцию</h1>
+
+<div class="alert alert-warning">
+    Вы уверены, что хотите удалить запись?
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">Дата</dt>
+    <dd class="col-sm-9">{{ object.date }}</dd>
+
+    <dt class="col-sm-3">Статус</dt>
+    <dd class="col-sm-9">{{ object.status.name }}</dd>
+
+    <dt class="col-sm-3">Тип</dt>
+    <dd class="col-sm-9">{{ object.transaction_type.name }}</dd>
+
+    <dt class="col-sm-3">Категория</dt>
+    <dd class="col-sm-9">{{ object.category.name }}</dd>
+
+    <dt class="col-sm-3">Подкатегория</dt>
+    <dd class="col-sm-9">{{ object.subcategory.name }}</dd>
+
+    <dt class="col-sm-3">Сумма</dt>
+    <dd class="col-sm-9">{{ object.amount }}</dd>
+</dl>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a class="btn btn-outline-secondary" href="{% url 'cashflow:transaction_list' %}">Отмена</a>
+</form>
+{% endblock %}
+

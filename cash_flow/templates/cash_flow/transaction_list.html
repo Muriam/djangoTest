@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}Операции{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Учет движения денежных средств: операции</h1>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-2 align-items-end">
+            <div class="col-md-2">
+                <label class="form-label">с</label>
+                <input type="date" name="date_from" class="form-control" value="{{ request.GET.date_from }}">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">по</label>
+                <input type="date" name="date_to" class="form-control" value="{{ request.GET.date_to }}">
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Статус</label>
+                <select name="status_id" class="form-select">
+                    <option value="">Все</option>
+                    {% for s in statuses %}
+                        <option value="{{ s.id }}" {% if request.GET.status_id == s.id|stringformat:'s' %}selected{% endif %}>{{ s.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Тип</label>
+                <select name="transaction_type_id" class="form-select">
+                    <option value="">Все</option>
+                    {% for t in types %}
+                        <option value="{{ t.id }}" {% if request.GET.transaction_type_id == t.id|stringformat:'s' %}selected{% endif %}>{{ t.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Категория</label>
+                <select name="category_id" class="form-select">
+                    <option value="">Все</option>
+                    {% for c in categories %}
+                        <option value="{{ c.id }}" {% if request.GET.category_id == c.id|stringformat:'s' %}selected{% endif %}>{{ c.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <label class="form-label">Подкатегория</label>
+                <select name="subcategory_id" class="form-select">
+                    <option value="">Все</option>
+                    {% for sc in subcategories %}
+                        <option value="{{ sc.id }}" {% if request.GET.subcategory_id == sc.id|stringformat:'s' %}selected{% endif %}>{{ sc.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-12 text-end">
+                <button type="submit" class="btn btn-primary">Фильтровать</button>
+                <a class="btn btn-outline-secondary" href="{% url 'cashflow:transaction_list' %}">Сбросить</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<a class="btn btn-success mb-3" href="{% url 'cashflow:transaction_create' %}">Добавить операцию</a>
+
+<table class="table table-striped table-bordered align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th>Тип</th>
+            <th>Категория</th>
+            <th>Подкатегория</th>
+            <th>Сумма</th>
+            <th>Комментарий</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in transactions %}
+            <tr>
+                <td>{{ t.date }}</td>
+                <td>{{ t.status.name }}</td>
+                <td>{{ t.transaction_type.name }}</td>
+                <td>{{ t.category.name }}</td>
+                <td>{{ t.subcategory.name }}</td>
+                <td>{{ t.amount }}</td>
+                <td>{{ t.comment|default:'' }}</td>
+                <td>
+                    <a class="btn btn-sm btn-secondary" href="{% url 'cashflow:transaction_edit' t.pk %}">Изменить</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'cashflow:transaction_delete' t.pk %}">Удалить</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="8">Нет операций</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

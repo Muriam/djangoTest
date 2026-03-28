@@ -45,16 +45,16 @@
 
 📡 API Endpoints
 
-	Метод	URL	                 Описание
-	GET	/api/transactions/	 Список транзакций
-	POST	/api/transactions/	 Создание транзакции
-	GET	/api/transactions/{id}/	 Детали транзакции
-	PUT	/api/transactions/{id}/	 Обновление транзакции
-	DELETE	/api/transactions/{id}/	 Удаление транзакции
-	GET	/api/statuses/	         Список статусов
-	GET	/api/types/	         Список типов операций
-	GET	/api/categories/	 Список категорий
-	GET	/api/subcategories/	 Список подкатегорий
+	Метод	 URL	                     Описание
+	GET	     /api/transactions/	         Список транзакций
+	POST	 /api/transactions/	         Создание транзакции
+	GET	     /api/transactions/{id}/	 Детали транзакции
+	PUT	     /api/transactions/{id}/	 Обновление транзакции
+	DELETE	 /api/transactions/{id}/	 Удаление транзакции
+	GET	     /api/statuses/	             Список статусов
+	GET	     /api/types/	             Список типов операций
+	GET	     /api/categories/	         Список категорий
+	GET	     /api/subcategories/	     Список подкатегорий
 
 
 

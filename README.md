@@ -13,12 +13,12 @@
 
 🛠 Технологии
 
-    	Backend		Django 6.0.3, Django REST Framework 3.15.2, Python 3.12
-	API		REST API (JSON), DRF ViewSets, Serializers, Router
-	Frontend	HTML5, CSS3, Bootstrap 5, JavaScript (Fetch API)
-	База данных	SQLite3 (реляционная)
-	ORM		Django ORM (select_related, фильтрация, ForeignKey)
-	Инструменты	pip, venv, Git
+    Backend			Django 6.0.3, Django REST Framework 3.15.2, Python 3.12
+	API		    	REST API (JSON), DRF ViewSets, Serializers, Router
+	Frontend		HTML5, CSS3, Bootstrap 5, JavaScript (Fetch API)
+	База данных		SQLite3 (реляционная)
+	ORM		    	Django ORM (select_related, фильтрация, ForeignKey)
+	Инструменты		pip, venv, Git
 
 
 📁 Структура проекта

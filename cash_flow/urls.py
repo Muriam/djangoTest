@@ -14,5 +14,5 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/get-categories/', views.categories_by_type, name='categories_by_type'),
     path('api/get-subcategories/', views.subcategories_by_category, name='subcategories_by_category'),
-    path('', TemplateView.as_view(template_name='cash_flow/index.html'), name='home'),
+    path('', TemplateView.as_view(template_name='index.html'), name='home'),
 ]

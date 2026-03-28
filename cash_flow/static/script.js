@@ -38,7 +38,7 @@ async function loadStatuses() {
 async function loadTypes() {
     const resp = await fetch(API_BASE + 'types/');
     const data = await resp.json();
-    const items = data.results || data;  // ← ЭТО КЛЮЧЕВОЕ!
+    const items = data.results || data;
     
     const select = document.getElementById('type');
     const filter = document.getElementById('filter-type');
@@ -55,7 +55,7 @@ async function loadTypes() {
 async function loadCategoriesForFilter() {
     const resp = await fetch(API_BASE + 'categories/');
     const data = await resp.json();
-    const items = data.results || data;  // ← ЭТО КЛЮЧЕВОЕ!
+    const items = data.results || data;
     
     const filter = document.getElementById('filter-category');
     filter.innerHTML = '<option value="">Все категории</option>';
@@ -68,7 +68,7 @@ async function loadCategoriesForFilter() {
 async function loadSubcategoriesForFilter() {
     const resp = await fetch(API_BASE + 'subcategories/');
     const data = await resp.json();
-    const items = data.results || data;  // ← ЭТО КЛЮЧЕВОЕ!
+    const items = data.results || data;
     
     const filter = document.getElementById('filter-subcategory');
     filter.innerHTML = '<option value="">Все подкатегории</option>';
@@ -87,7 +87,7 @@ async function loadCategories() {
     }
     const resp = await fetch(API_BASE + 'categories/?transaction_type=' + typeId);
     const data = await resp.json();
-    const items = data.results || data;  // ← ЭТО КЛЮЧЕВОЕ!
+    const items = data.results || data;
     
     categorySelect.innerHTML = '<option value="">Выберите категорию</option>';
     items.forEach(c => {
@@ -104,7 +104,7 @@ async function loadSubcategories() {
     }
     const resp = await fetch(API_BASE + 'subcategories/?category=' + catId);
     const data = await resp.json();
-    const items = data.results || data;  // ← ЭТО КЛЮЧЕВОЕ!
+    const items = data.results || data;
     
     subSelect.innerHTML = '<option value="">Выберите подкатегорию</option>';
     items.forEach(s => {
@@ -127,7 +127,7 @@ async function loadTransactions() {
     
     const resp = await fetch(url);
     const data = await resp.json();
-    const transactions = data.results || data;  // ← ЭТО КЛЮЧЕВОЕ!
+    const transactions = data.results || data;
     const tbody = document.getElementById('transactions-list');
     
     if (transactions.length === 0) {

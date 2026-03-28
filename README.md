@@ -13,9 +13,12 @@
 
 🛠 Технологии
 
-    Backend: Django 6.0.3
-    Frontend: HTML5
-    Database: SQLite3
+    	Backend		Django 6.0.3, Django REST Framework 3.15.2, Python 3.12
+	API		REST API (JSON), DRF ViewSets, Serializers, Router
+	Frontend	HTML5, CSS3, Bootstrap 5, JavaScript (Fetch API)
+	База данных	SQLite3 (реляционная)
+	ORM		Django ORM (select_related, фильтрация, ForeignKey)
+	Инструменты	pip, venv, Git
 
 
 📁 Структура проекта
@@ -40,6 +43,18 @@
 	└── README.md	
 
 
+📡 API Endpoints
+
+	Метод	URL	                 Описание
+	GET	/api/transactions/	 Список транзакций
+	POST	/api/transactions/	 Создание транзакции
+	GET	/api/transactions/{id}/	 Детали транзакции
+	PUT	/api/transactions/{id}/	 Обновление транзакции
+	DELETE	/api/transactions/{id}/	 Удаление транзакции
+	GET	/api/statuses/	         Список статусов
+	GET	/api/types/	         Список типов операций
+	GET	/api/categories/	 Список категорий
+	GET	/api/subcategories/	 Список подкатегорий
 
 
 

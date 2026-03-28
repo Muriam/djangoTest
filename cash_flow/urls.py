@@ -1,37 +1,18 @@
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import TemplateView
+from rest_framework.routers import DefaultRouter
 from . import views
 
-
-app_name = 'cashflow'
+router = DefaultRouter()
+router.register(r'transactions', views.CashFlowViewSet, basename='transaction')
+router.register(r'statuses', views.StatusViewSet)
+router.register(r'types', views.TransactionTypeViewSet)
+router.register(r'categories', views.CategoryViewSet)
+router.register(r'subcategories', views.SubcategoryViewSet)
 
 urlpatterns = [
-    path('', views.TransactionListView.as_view(), name='transaction_list'),
-    path('create/', views.TransactionCreateView.as_view(), name='transaction_create'),
-    path('<int:pk>/edit/', views.TransactionUpdateView.as_view(), name='transaction_edit'),
-    path('<int:pk>/delete/', views.TransactionDeleteView.as_view(), name='transaction_delete'),
-
-    # AJAX endpoints для зависимых выпадающих списков в форме операции
-    path('ajax/categories-by-type/', views.categories_by_transaction_type, name='ajax_categories_by_type'),
-    path('ajax/subcategories-by-category/', views.subcategories_by_category, name='ajax_subcategories_by_category'),
-    
-    # Справочники
-    path('statuses/', views.StatusListView.as_view(), name='status_list'),
-    path('statuses/create/', views.StatusCreateView.as_view(), name='status_create'),
-    path('statuses/<int:pk>/edit/', views.StatusUpdateView.as_view(), name='status_edit'),
-    path('statuses/<int:pk>/delete/', views.StatusDeleteView.as_view(), name='status_delete'),
-    
-    path('types/', views.TypeListView.as_view(), name='type_list'),
-    path('types/create/', views.TypeCreateView.as_view(), name='type_create'),
-    path('types/<int:pk>/edit/', views.TypeUpdateView.as_view(), name='type_edit'),
-    path('types/<int:pk>/delete/', views.TypeDeleteView.as_view(), name='type_delete'),
-    
-    path('categories/', views.CategoryListView.as_view(), name='category_list'),
-    path('categories/create/', views.CategoryCreateView.as_view(), name='category_create'),
-    path('categories/<int:pk>/edit/', views.CategoryUpdateView.as_view(), name='category_edit'),
-    path('categories/<int:pk>/delete/', views.CategoryDeleteView.as_view(), name='category_delete'),
-    
-    path('subcategories/', views.SubcategoryListView.as_view(), name='subcategory_list'),
-    path('subcategories/create/', views.SubcategoryCreateView.as_view(), name='subcategory_create'),
-    path('subcategories/<int:pk>/edit/', views.SubcategoryUpdateView.as_view(), name='subcategory_edit'),
-    path('subcategories/<int:pk>/delete/', views.SubcategoryDeleteView.as_view(), name='subcategory_delete'),
+    path('api/', include(router.urls)),
+    path('api/get-categories/', views.categories_by_type, name='categories_by_type'),
+    path('api/get-subcategories/', views.subcategories_by_category, name='subcategories_by_category'),
+    path('', TemplateView.as_view(template_name='cash_flow/index.html'), name='home'),
 ]

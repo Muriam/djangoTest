@@ -16,3 +16,43 @@
     Backend: Django 6.0.3
     Frontend: HTML5
     Database: SQLite3
+
+
+📁 Структура проекта
+
+	 djangoTest/
+	├── cash_flow/                    # Основное приложение
+	│   ├── models.py                 # Модели данных
+	│   ├── views.py                  # API ViewSets
+	│   ├── serializers.py            # DRF сериализаторы
+	│   ├── urls.py                   # Маршруты
+	│   ├── templates/
+	│   │   └── cash_flow/
+	│   │       └── index.html        # Главная страница
+	│   └── static/
+	│       └── cash_flow/
+	│           └── js/
+	│               └── script.js     # Фронтенд логика
+	├── project/                      # Настройки проекта
+	│   └── settings.py
+	├── manage.py
+	├── requirements.txt
+	└── README.md	
+
+
+
+
+
+    ✅ Django ORM используется
+
+    ✅ Django REST Framework настроен
+
+    ✅ Фильтрация по всем полям
+
+    ✅ Управление справочниками
+
+    ✅ Логические зависимости (категория→тип, подкатегория→категория)
+
+    ✅ Валидация данных
+
+    ✅ Удобный интерфейс
